@@ -1,10 +1,9 @@
-from modules.database import sql_select, sql_write, render_messages, log_message, connect, close
-from flask import Flask, render_template, request, redirect, session, flash, url_for, jsonify
+from modules.database import sql_write, render_messages, log_message, connect, close
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_socketio import SocketIO, send
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 
