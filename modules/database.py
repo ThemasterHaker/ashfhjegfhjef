@@ -1,6 +1,6 @@
 import psycopg2
 
-db = "postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb"
+db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
 
 
 def connect():
@@ -30,8 +30,8 @@ def sql_write(query, params):
 
 
 def log_message(message):
-    query = 'INSERT INTO messages (message, username) VALUES (%s, %s)'
-    params = (message['msg'], message['username'])
+    query = 'INSERT INTO messages (username, message) VALUES (%s, %s)'
+    params = (message['username'], message['msg'])
     sql_write(query, params)
 
 

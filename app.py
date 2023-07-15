@@ -11,8 +11,6 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 @app.route("/", methods=["GET", "POST"])
 def index():
     chat_messages = render_messages()
-    print(chat_messages)
-    print("test")
     return render_template("index.html", chat_messages=chat_messages)
 
 
