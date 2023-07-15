@@ -1,12 +1,10 @@
 import psycopg2
-import bcrypt
 
-
-db = "cozydb"
+db = "postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb"
 
 
 def connect():
-    conn = psycopg2.connect(f"dbname={db}")
+    conn = psycopg2.connect(db)
     cur = conn.cursor()
     return conn, cur
 
