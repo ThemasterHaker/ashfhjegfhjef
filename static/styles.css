@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "pixel font", serif;
+    background-image: url("stars3.gif");
+    cursor: url("blue.cur"), default;
+}
+
+#container {
+    border: 4px double purple;
+    margin: 25px auto;
+    width: 1000px;
+    height: auto;
+    text-align: center;
+    background-color: #0A0A0A;
+}
+
+@font-face {
+  font-family: "pixel font";
+  src: url("font22.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "slim font";
+  src: url("ambitsek.ttf") format("truetype");
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    border-bottom: 4px double purple;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+form {
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    font-family: "slim font", serif;
+    margin-bottom: 15px;
+}
+
+input {
+    font-family: "slim font", serif;
+    max-width: 90%;
+    box-sizing: border-box;
+    border: 2px solid purple;
+    background-color: black;
+    color: #F6F6F6;
+}
+
+#signup-form {
+    margin-top: 35px;
+}
+
+#welcome {
+    margin-top: 30px;
+}
+
+button {
+    font-family: "slim font", serif;
+}
+
+h2 {
+    color: #F6F6F6;
+    margin-bottom: 4px;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    font-family: "slim font", serif;
+    color: #F6F6F6;
+}
+
+a:hover {
+    color: purple;
+    transition: 0.3s all;
+}
+
+a:active {
+    color: black;
+}
+
+.blue {
+    color: #06D1FB;
+}
+
+.yellow {
+    color: #FFFB05;
+}
+
+#pika {
+    position: fixed;
+    top: 0;
+    right: 50px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #FFFB05;
+}
+
+audio::-webkit-media-controls-play-button, audio::-webkit-media-controls-mute-button {
+  background-color: #06D1FB;
+  border-radius: 50%;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#footermsg {
+    color: #F6F6F6;
+}
+
+.main-content {
+    color: #F6F6F6;
+    text-align: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 40px;
+    font-family: "slim font", serif;
+    border-bottom: 2px dashed purple;
+}
+
+h3 {
+    margin-top: 0;
+}
+.rainbowText {
+  font-family: "slim font", serif black;
+  background-image:
+    linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: move 200s linear infinite;
+}
+
+@keyframes move {
+  to {
+    background-position: 4500vh;
+  }
+}
+#chatbox {
+    margin: 25px auto;
+    text-align: left;
+    padding: 10px;
+    background-image: url("stars3.gif");
+    height: 300px;
+    width: 530px;
+    overflow: hidden;
+    border: 2px solid purple;
+}
+#chatbox p {
+    padding-left: 15px;
+    color: cyan;
+    font-size: 14px;
+}
+#chat-wrapper {
+    margin: 0 auto;
+    background: black;
+    width: 600px;
+    max-width: 100%;
+    border: 2px solid purple;
+    border-radius: 4px;
+}
+#chat-content {
+    padding-top: 50px;
+}
+.form-field label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 530px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    row-gap: 10px;
+    margin-right: 10px;
+}
+#send {
+    display: flex;
+    align-items: stretch;
+}
+#clear input[type="submit"] {
+    padding: 5px;
+    font-size: 14px;
+    background-color: #0A0A0A;
+
+}
+
+#send input[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 22px;
+    margin-right: 30px;
+    background-color: #0A0A0A;
+}
+#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover {
+    background-image:
+    linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: move 400s linear infinite;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+b {
+    color: red;
+    font-weight: bold;
+}
