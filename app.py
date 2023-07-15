@@ -6,7 +6,6 @@ from flask_socketio import SocketIO, send
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
-# postgres://cozy_db_user:4Z3pwSLfQKMcVAMfnXrqSYJnHLKaZhbe@dpg-cip5bmdgkuvrtobr04ig-a.singapore-postgres.render.com/cozy_db
 
 
 @app.route("/", methods=["GET", "POST"])
