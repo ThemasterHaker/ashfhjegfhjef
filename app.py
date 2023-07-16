@@ -37,9 +37,13 @@ def signup():
 
 
 @app.route("/chat-log", methods=["GET"])
-def chat_log():
-    result = chat_log()
-    return jsonify(result)
+def get_chat_log():
+    try:
+        chat_messages = chat_log()
+        return jsonify(chat_messages)
+    except Exception as e:
+        print(f"Error in get_chat_log: {e}")  # Add this line
+        return jsonify(error=str(e)), 500
 
 
 if __name__ == '__main__':
