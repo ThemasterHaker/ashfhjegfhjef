@@ -1,4 +1,4 @@
-from modules.database import sql_write, render_messages, log_message, connect, close
+from modules.database import sql_write, render_messages, log_message
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_socketio import SocketIO, send
 
