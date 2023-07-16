@@ -1,4 +1,4 @@
-from modules.database import sql_write, render_messages, log_message
+from modules.database import sql_write, render_messages, log_message, get_conn, release_conn, chat_log
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_socketio import SocketIO, send
 
@@ -24,6 +24,7 @@ def handle_message(data):
 def clear_chat():
     query = 'DELETE FROM messages'
     sql_write(query, [])
+
     return redirect(url_for('index'))
 
 
@@ -37,8 +38,8 @@ def signup():
 
 @app.route("/chat-log", methods=["GET"])
 def chat_log():
-    chat_messages = render_messages()
-    return jsonify(chat_messages)
+    result = chat_log()
+    return jsonify(result)
 
 
 if __name__ == '__main__':

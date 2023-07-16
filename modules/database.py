@@ -45,3 +45,14 @@ def log_message(message):
 def render_messages():
     query = 'SELECT username, message FROM messages ORDER BY id DESC LIMIT 8'
     return sql_select(query, [])
+
+
+def chat_log():
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute('SELECT username, message FROM messages ORDER BY id DESC LIMIT 8')
+    result = cur.fetchall()
+    chat_messages = [{'username': row[0], 'msg': row[1]} for row in result]
+    cur.close()
+    release_conn(conn)
+    return chat_messages
