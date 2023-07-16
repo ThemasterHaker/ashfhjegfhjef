@@ -2,34 +2,7 @@
 <html lang="en">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function renderChatMessages(data) {
-            $('#chatbox').empty();
-            data.reverse().forEach(function(msg){
-                $('#chatbox').append('<p><b>' + msg.username + ': </b>' + msg.msg + '</p>');
-            });
-        }
-
-        function submitMessage() {
-            const username = $('#chat-username').val();
-            const message = $('#usermsg').val();
-
-            $.ajax({
-                type: "POST",
-                url: '/chat-log',
-                data: {username: username, usermsg: message},
-                success: renderChatMessages
-            });
-        }
-
-        $(document).ready(function() {
-            $.ajax({
-                type: "GET",
-                url: '/chat-log',
-                success: renderChatMessages
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <link rel="stylesheet" href="/static/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -83,7 +56,9 @@
                     <form name="clear" action="/clear-chat" method="POST">
                         <input type="submit" value="clear">
                     </form>
+
                 </div>
+
             <form autocomplete="off" name="message" onsubmit="event.preventDefault(); submitMessage();">
                 <div class="form-wrapper">
                     <div class="input-wrapper">
