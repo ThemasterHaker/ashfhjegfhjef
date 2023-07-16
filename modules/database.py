@@ -1,7 +1,10 @@
 import psycopg2
+from flask import render_template
 from psycopg2 import pool
 
 db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
+# db = "cozydb"
+
 
 minconn = 1
 maxconn = 10
@@ -36,15 +39,16 @@ def sql_write(query, params):
     release_conn(conn)
 
 
-def log_message(message):
+def log_message(username, message):
     query = 'INSERT INTO messages (username, message) VALUES (%s, %s)'
-    params = (message['username'], message['msg'])
+    params = (username, message)
     sql_write(query, params)
 
 
 def render_messages():
     query = 'SELECT username, message FROM messages ORDER BY id DESC LIMIT 8'
-    return sql_select(query, [])
+    result = sql_select(query, ())
+    return render_template("index.html", chat_messages=result)
 
 
 def chat_log():

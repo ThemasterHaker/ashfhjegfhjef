@@ -1,58 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function(){
-            const socket = io.connect('https://' + document.domain + ':' + location.port);
-            socket.on('connect', function() {
-                socket.emit('my event', {data: 'I\'m connected!'});
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function renderChatMessages(data) {
+            $('#chatbox').empty();
+            data.reverse().forEach(function(msg){
+                $('#chatbox').append('<p><b>' + msg.username + ': </b>' + msg.msg + '</p>');
             });
+        }
 
-            const $usermsg = $('#usermsg');
+        function submitMessage() {
+            const username = $('#chat-username').val();
+            const message = $('#usermsg').val();
 
-            $.get('/chat-log', function(data) {
-                const reversedMessages = data.reverse();
-                for (let i = 0; i < reversedMessages.length; i++) {
-                    const message = reversedMessages[i];
-                    $('#chatbox').append('<p><b>' + message.username + '</b>: ' + message.msg + '</p>');
-                }
+            $.ajax({
+                type: "POST",
+                url: '/chat-log',
+                data: {username: username, usermsg: message},
+                success: renderChatMessages
             });
+        }
 
-            $('form[name="message"]').submit(function(e){
-                e.preventDefault();
-                const username = $('#chat-username').val();
-                const message = $usermsg.val();
-                if (message.length > 40) {
-                    alert('Message length exceeds the limit of 40 characters.');
-                    return false;
-                }
-                if (username.length > 10) {
-                    alert('Username length exceeds the limit of 10 characters.');
-                    return false;
-                }
-                socket.emit('message', {username: username, msg: message});
-                $usermsg.val('');
-                return false;
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: '/chat-log',
+                success: renderChatMessages
             });
-
-            socket.on('server_response', function(data){
-                const message = data.data;
-                appendMessage(message.username, message.msg);
-                if ($('#chatbox').find('p').length > 8) {
-                    removeOldestMessage();
-                }
-            });
-
-            function appendMessage(username, message) {
-                const formattedMessage = '<p><b class="username">' + username + '</b>: ' + message + '</p>';
-                $('#chatbox').append(formattedMessage);
-            }
-
-            function removeOldestMessage() {
-                $('#chatbox').find('p').first().remove();
-            }
         });
     </script>
     <link rel="stylesheet" href="/static/styles.css">
@@ -66,6 +41,7 @@
 
 <body>
 <div id="container">
+
     <header class="yellow">
         <h1 class="rainbowText">
             <img src="https://99gifshop.neocities.org/items/new/links1.gif"> WORK IN PROGRESS! <img
@@ -73,9 +49,7 @@
             <a href="https://www.cameronsworld.net/">
                 <img id="pika" src="https://99gifshop.neocities.org/items/4/animep_1.gif">
             </a>
-
         </h1>
-
     </header>
 
     <main>
@@ -103,13 +77,14 @@
         </div>
         <div class="main-content" id="chat-content">
             <div id="chat-wrapper">
-            <div id="chatbox"></div>
+            <div id="chatbox">
+            </div>
                 <div id="clear">
                     <form name="clear" action="/clear-chat" method="POST">
                         <input type="submit" value="clear">
                     </form>
                 </div>
-            <form name="message" autocomplete="off">
+            <form autocomplete="off" name="message" onsubmit="event.preventDefault(); submitMessage();">
                 <div class="form-wrapper">
                     <div class="input-wrapper">
                         <div class="form-field">

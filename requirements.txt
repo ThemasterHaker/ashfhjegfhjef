@@ -1,7 +1,4 @@
-Flask
+Flask~=2.3.2
 gunicorn
-psycopg2
-flask_socketio
-bcrypt
+psycopg2~=2.9.6
 Postgres
-eventlet
