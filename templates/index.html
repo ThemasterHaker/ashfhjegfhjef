@@ -37,7 +37,7 @@
                 return false;
             });
 
-            socket.on('message', function(data){
+            socket.on('server_response', function(data){
                 const message = data.data;
                 appendMessage(message.username, message.msg);
                 if ($('#chatbox').find('p').length > 8) {
