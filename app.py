@@ -43,7 +43,7 @@ def get_chat_log():
         chat_messages = chat_log()
         return jsonify(chat_messages)
     except Exception as e:
-        print(f"Error in get_chat_log: {e}")  # Add this line
+        print(f"Error in get_chat_log: {e}")
         return jsonify(error=str(e)), 500
 
 

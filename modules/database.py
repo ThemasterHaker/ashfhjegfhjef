@@ -58,5 +58,5 @@ def chat_log():
         release_conn(conn)
         return chat_messages
     except Exception as e:
-        print(f"Error in chat_log: {e}")  # Add this line
+        print(f"Error in chat_log: {e}")
 
