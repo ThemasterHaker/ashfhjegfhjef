@@ -16,7 +16,6 @@ def index():
 
 @socketio.on('message')
 def handle_message(data):
-    print('received message: ' + str(data))
     log_message(data)
     send({'data': data}, event='server_response', broadcast=True)
 
@@ -25,7 +24,6 @@ def handle_message(data):
 def clear_chat():
     query = 'DELETE FROM messages'
     sql_write(query, [])
-
     return redirect(url_for('index'))
 
 
@@ -39,13 +37,9 @@ def signup():
 
 @app.route("/chat-log", methods=["GET"])
 def chat_log():
-    conn, cur = connect()
-    cur.execute('SELECT username, message FROM messages ORDER BY id DESC LIMIT 8')
-    result = cur.fetchall()
-    chat_messages = [{'username': row[0], 'msg': row[1]} for row in result]
-    close(conn, cur)
+    chat_messages = render_messages()
     return jsonify(chat_messages)
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=False)
