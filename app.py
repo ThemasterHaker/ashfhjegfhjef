@@ -1,6 +1,7 @@
-from modules.database import sql_write, render_messages, chat_log, log_message
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-
+from modules.database import render_messages, chat_log, log_message, clear_chat, \
+    user_signup, \
+    check_login, get_user
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -9,13 +10,15 @@ app.config['SECRET_KEY'] = 'secret!'
 @app.route("/", methods=["GET", "POST"])
 def index():
     chat_messages = render_messages()
-    return render_template("index.html", chat_messages=chat_messages)
+    username = None
+    if 'user_id' in session:
+        username = get_user(session['user_id'])
+    return render_template("index.html", chat_messages=chat_messages, username=username)
 
 
 @app.route('/clear-chat', methods=['POST'])
-def clear_chat():
-    query = 'DELETE FROM messages'
-    sql_write(query, [])
+def clear_chat_route():
+    clear_chat()
     return redirect(url_for('index'))
 
 
@@ -27,6 +30,47 @@ def get_chat_log():
         log_message(username, message)
     chat_messages = chat_log()
     return jsonify(chat_messages)
+
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        email = request.form.get("email")
+        name = request.form.get("username")
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm")
+        if user_signup(email, name, password, confirm_password):
+            return redirect(url_for("login"))
+        else:
+            flash("passwords do not match.")
+            return redirect(url_for("signup"))
+    return render_template("signup.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user_id, user_email, admin_status = check_login(email, password)
+
+        if user_id is not None:
+            session['user_id'] = user_id
+            session['user_email'] = user_email
+            session['admin'] = admin_status
+
+            return redirect(url_for("index"))
+        else:
+            return "<h3>invalid login</h3>"
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 if __name__ == '__main__':

@@ -2,3 +2,4 @@ Flask
 gunicorn
 psycopg2
 Postgres
+bcrypt

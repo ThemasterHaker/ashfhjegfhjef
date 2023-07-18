@@ -1,3 +1,6 @@
+// REPLACED SOCKETIO LOGIC WITH AJAX REQUESTS, ALLOWS CHAT MSG TO SEND WITHOUT PAGE REFRESH
+
+// RENDERS CHAT MESSAGES
 function renderChatMessages(data) {
     $('#chatbox').empty();
     data.reverse().forEach(function (msg) {
@@ -5,6 +8,7 @@ function renderChatMessages(data) {
     });
 }
 
+// LOGS MESSAGE TO DATABASE WHEN RECEIVED, IF SUCCESS, RENDER CHAT MESSAGES
 function submitMessage() {
     const username = $('#chat-username').val();
     const message = $('#usermsg').val();
@@ -20,7 +24,7 @@ function submitMessage() {
     });
 }
 
-
+// WAIT UNTIL PAGE IS LOADED, THEN RENDER CHAT MESSAGES
 $(document).ready(function () {
     $.ajax({
         type: "GET",

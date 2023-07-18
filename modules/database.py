@@ -1,15 +1,15 @@
 import psycopg2
-from flask import render_template
 from psycopg2 import pool
+import bcrypt
 
 db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
-# db = "cozydb"
+# db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a.singapore-postgres' \
+#      '.render.com/cozydb'
 
+min_conn = 1
+max_conn = 10
 
-minconn = 1
-maxconn = 10
-
-conn_pool = psycopg2.pool.SimpleConnectionPool(minconn, maxconn, db)
+conn_pool = psycopg2.pool.SimpleConnectionPool(min_conn, max_conn, db)
 
 
 def get_conn():
@@ -48,19 +48,57 @@ def log_message(username, message):
 def render_messages():
     query = 'SELECT username, message FROM messages ORDER BY id DESC LIMIT 8'
     result = sql_select(query, ())
-    return render_template("index.html", chat_messages=result)
+    return result
 
 
 def chat_log():
-    try:
-        conn = get_conn()
-        cur = conn.cursor()
-        cur.execute('SELECT username, message FROM messages ORDER BY id DESC LIMIT 8')
-        result = cur.fetchall()
-        chat_messages = [{'username': row[0], 'msg': row[1]} for row in result]
-        cur.close()
-        release_conn(conn)
-        return chat_messages
-    except Exception as e:
-        print(f"Error in chat_log: {e}")
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute('SELECT username, message FROM messages ORDER BY id DESC LIMIT 8')
+    result = cur.fetchall()
+    chat_messages = [{'username': row[0], 'msg': row[1]} for row in result]
+    cur.close()
+    release_conn(conn)
+    return chat_messages
 
+
+def clear_chat():
+    query = 'DELETE FROM messages'
+    params = []
+    sql_write(query, params)
+
+
+def user_signup(email, name, password, confirm_password):
+    if password == confirm_password:
+
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+
+        query = "INSERT INTO users (email, name, pw_hash) VALUES (%s, %s, %s)"
+        params = (email, name, pw_hash,)
+
+        sql_write(query, params)
+
+        return True
+    else:
+        return False
+
+
+def check_login(user_email, user_pw):
+    result = sql_select("SELECT id, email, pw_hash, admin FROM users WHERE email = %s", (user_email,))
+
+    if result and bcrypt.checkpw(user_pw.encode(), result[0][2].encode()):
+        user_id = result[0][0]
+        user_email = result[0][1]
+        admin_status = result[0][3]
+
+        return user_id, user_email, admin_status
+    else:
+        return None
+
+
+def get_user(user_id):
+    query = "SELECT name FROM users WHERE id = %s"
+    params = (user_id,)
+    result = sql_select(query, params)
+    username = result[0][0]
+    return username

@@ -12,8 +12,8 @@
 
 <body>
 <div id="container">
-    <header class="yellow">
-        <h1>
+    <header>
+        <h1 class="rainbowText">
             <img src="https://99gifshop.neocities.org/items/new/links1.gif"> WORK IN PROGRESS! <img
                 src="https://99gifshop.neocities.org/items/new/links1.gif">
         </h1>
@@ -29,23 +29,26 @@
             <a href="/">home</a>
         </div>
         <div id="signup-form">
-            <form action="/signup" method="POST">
-                email: <input type="text" name="email"><br>
-                name: <input type="text" name="name"><br>
-                password: <input type="password" name="password"><br>
-                confirm pass: <input type="password" name="password_confirm"><br>
-                <button type="submit">sign up</button>
+            <form class ="signup" action="/signup" method="POST" autocomplete="off">
+                email: <input type="text" name="email" required><br>
+                username: <input type="text" name="username" required><br>
+                password: <input type="password" name="password" required><br>
+                confirm pass: <input type="password" name="confirm" required><br>
+                <button id="signsubmit" type="submit">sign up</button>
             </form>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         </div>
-        <br>
-        <br>
-        <img src="https://favim.com/pd/s12/orig/160406/cat-catstruction-play-on-words-construction-cats-Favim.com-4174852.jpeg"
-             alt="catstruction">
     </main>
-    <div id="welcome">
-        <img src="https://cdn.theatlantic.com/thumbor/j6p05ljsBCHAkSaW7-9rdVXU_Rk=/media/img/posts/2015/10/mamagnolia_acresunderconstruction/original.gif"
-             alt="construction">
-    </div>
 </div>
 
 

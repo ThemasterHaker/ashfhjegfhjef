@@ -204,11 +204,14 @@ h3 {
     display: flex;
     align-items: stretch;
 }
-#clear input[type="submit"] {
+
+#signsubmit {
+    background-color: #0A0A0A;
     padding: 5px;
     font-size: 14px;
-    background-color: #0A0A0A;
-
+    color: #F6F6F6;
+    box-sizing: border-box;
+    border: 2px solid purple;
 }
 
 #send input[type="submit"] {
@@ -216,12 +219,13 @@ h3 {
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
     padding: 5px 15px;
-    font-size: 22px;
+    font-size: 16px;
     margin-right: 30px;
-    background-color: #0A0A0A;
+    background-color: black;
 }
-#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover {
+#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover {
     background-image:
     linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
   -webkit-background-clip: text;
@@ -235,3 +239,49 @@ b {
     color: red;
     font-weight: bold;
 }
+form.signup {
+    color: #F6F6F6;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    gap: 3px;
+    margin-bottom: 30px;
+}
+#construction {
+    margin-bottom: 25px;
+}
+.flashes {
+    color: #F6F6F6;
+    margin-bottom: 20px;
+}
+#login-header {
+    margin-top: 30px;
+    color: red;
+}
+#login-p {
+    color: cyan;
+}
+.login {
+    font-size: 18px;
+}
+#login-submit {
+    border: 2px solid purple;
+    color: #F6F6F6;
+    background-color: black;
+    font-size: 18px;
+    padding: 5px;
+    margin-top: 15px;
+}
+#terminal {
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+}
+.cyan {
+    color: cyan;
+}
+.red {
+    color: red;
+}
+
