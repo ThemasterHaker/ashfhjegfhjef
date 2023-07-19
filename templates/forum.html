@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome</title>
+</head>
+
+
+<body>
+<div id="container">
+
+    <header class="yellow">
+        <h1 class="rainbowText">
+            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> INTERNET CAFE <img
+                src="https://99gifshop.neocities.org/items/new/links1.gif">
+            <a href="https://www.cameronsworld.net/">
+                <img id="pika" src="https://99gifshop.neocities.org/items/4/animep_1.gif">
+            </a>
+            {% if session['user_email'] is defined %}
+                <p><em>logged in as {{ session['user_email'] }}</em></p>
+            {% endif %}
+        </h1>
+    </header>
+
+    <main>
+        <div id="upper-content">
+            <h2>
+                <img src="https://99gifshop.neocities.org/items/3/star.gif">cozy corner<img
+                    src="https://99gifshop.neocities.org/items/3/star.gif">
+            </h2>
+            {% if session['user_email'] is defined %}
+                <a href="/">home</a>
+                <a href="/logout">logout</a>
+            {% endif %}
+        </div>
+        <div class="main-content-forum">
+            <br>
+        </div>
+        <div class="main-content-forum">
+            <ol id="forum-posts">
+                <li class="post">
+                    <h3 class="post-header">how do I get a job as a software dev?</h3>
+                    <p class="post-text">I am currently learning javascript, python, and front-end web development. Any tips?</p>
+                </li>
+            </ol>
+
+        </div>
+        <div class="main-content-forum">
+                <ol id="forum-posts">
+                    <li class="post">
+                        <h3 class="post-header">just wanted to say hi!</h3>
+                        <p class="post-text">hi, i'm bob I hope I am welcome here :)</p>
+                    </li>
+                </ol>
+
+        </div>
+        <div class="main-content-forum">
+                <ol id="forum-posts">
+                    <li class="post">
+                        <h3 class="post-header">anyone have any mcdonalds coupons?</h3>
+                        <p class="post-text">srsly craving sum chicken mcnuggets right now fam... DM me</p>
+                    </li>
+                </ol>
+
+        </div>
+
+        <div class="main-content-forum" id="recent-posts-footer">
+            <ol id="forum-posts" class="recent-footer">
+                <li class="post">
+                    <h3 class="post-recent">recent posts:</h3>
+                    <p class="post-link">just wanted to say hi!</p>
+                    <p class="post-link">title to another recent post with link</p>
+                </li>
+            </ol>
+
+            <p id="thanku" class="rainbowText">thank u for visiting!</p>
+
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

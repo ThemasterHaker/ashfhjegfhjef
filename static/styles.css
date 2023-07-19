@@ -14,7 +14,7 @@ html, body {
     width: 1000px;
     height: auto;
     text-align: center;
-    background-color: #0A0A0A;
+    background-color: #030303;
 }
 
 @font-face {
@@ -26,6 +26,10 @@ html, body {
   font-family: "slim font";
   src: url("ambitsek.ttf") format("truetype");
 }
+@font-face {
+  font-family: "pix";
+  src: url("pix.ttf") format("truetype");
+}
 
 header {
     display: flex;
@@ -34,6 +38,7 @@ header {
     border-bottom: 4px double purple;
     margin-bottom: 10px;
     font-size: 14px;
+    background-color: #030303;
 }
 
 form {
@@ -58,6 +63,15 @@ input {
 
 #signup-form {
     margin-top: 35px;
+}
+
+#signup-box {
+    border: 3px solid #F6F6F6;
+    border-left: 5px solid #F6F6F6;
+    border-top: 5px solid #F6F6F6;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto 50px auto;
 }
 
 #welcome {
@@ -173,7 +187,7 @@ h3 {
     width: 600px;
     max-width: 100%;
     border: 2px solid purple;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 #chat-content {
     padding-top: 50px;
@@ -212,6 +226,7 @@ h3 {
     color: #F6F6F6;
     box-sizing: border-box;
     border: 2px solid purple;
+    border-radius: 4px;
 }
 
 #send input[type="submit"] {
@@ -224,6 +239,7 @@ h3 {
     font-size: 16px;
     margin-right: 30px;
     background-color: black;
+    border-radius: 4px;
 }
 #send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover {
     background-image:
@@ -245,7 +261,7 @@ form.signup {
     align-items: center;
     text-align: left;
     gap: 3px;
-    margin-bottom: 30px;
+
 }
 #construction {
     margin-bottom: 25px;
@@ -271,6 +287,7 @@ form.signup {
     font-size: 18px;
     padding: 5px;
     margin-top: 15px;
+    border-radius: 4px;
 }
 #terminal {
     text-align: left;
@@ -285,3 +302,68 @@ form.signup {
     color: red;
 }
 
+
+
+
+#forum-posts {
+    list-style-type: none;
+}
+
+.post {
+
+}
+
+.post-header {
+    font-size: 26px;
+    color: #FFFB05;
+    font-family: "pix", serif;
+    margin-bottom: 13px;
+
+}
+
+.post-text {
+    font-size: 22px;
+    color: #06D1FB;
+    font-family: "pix", serif;
+    padding-left: 15px;
+    margin-top: 12px;
+}
+
+.main-content-forum {
+    text-align: left;
+    padding-bottom: 10px;
+    font-family: "pix", serif;
+    border-bottom: 2px dashed purple;
+}
+
+.post-recent {
+    color: #FFFB05;
+    font-size: 24px;
+    margin-bottom: 0;
+}
+.post-link {
+    font-size: 18px;
+    padding-left: 10px;
+    text-decoration: underline;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #06D1FB;
+}
+
+#thanku {
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+
+#recent-posts-footer {
+
+}
+.recent-footer {
+    margin-top: 0;
+    padding-top: 10px;
+}
+#clear-btn {
+    border-radius: 4px;
+    padding: 5px;
+}

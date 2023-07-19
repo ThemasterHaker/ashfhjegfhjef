@@ -29,6 +29,7 @@
             <a href="/">home</a>
         </div>
         <div id="signup-form">
+        <div id="signup-box">
             <form class ="signup" action="/signup" method="POST" autocomplete="off">
                 email: <input type="text" name="email" required><br>
                 username: <input type="text" name="username" required><br>
@@ -36,7 +37,7 @@
                 confirm pass: <input type="password" name="confirm" required><br>
                 <button id="signsubmit" type="submit">sign up</button>
             </form>
-
+        </div>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul class="flashes">

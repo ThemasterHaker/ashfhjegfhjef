@@ -73,5 +73,14 @@ def logout():
     return redirect("/")
 
 
+@app.route("/forum")
+def forum():
+    if session['user_id']:
+        username = get_user(session['user_id'])
+        return render_template("forum.html", username=username)
+    else:
+        return redirect(url_for("login"))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
