@@ -6,11 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-render = True
-db = os.environ.get('EXTERNAL_DB')
+render = False
+db = os.getenv('EXTERNAL_DB')
 
 if render:
-    db = os.environ.get('INTERNAL_DB')
+    db = os.getenv('INTERNAL_DB')
 
 min_conn = 1
 max_conn = 10
