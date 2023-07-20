@@ -10,6 +10,7 @@ if render:
     db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
 
 
+
 min_conn = 1
 max_conn = 10
 
