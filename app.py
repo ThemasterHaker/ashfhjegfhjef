@@ -1,4 +1,4 @@
-from modules.database import render_messages, chat_log, log_message, clear_chat, \
+from models import render_messages, chat_log, log_message, clear_chat, \
     user_signup, \
     check_login, get_user, log_post, get_posts, delete_post, get_recent_posts, get_post
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
