@@ -15,7 +15,7 @@
 
     <header class="yellow">
         <h1 class="rainbowText">
-            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> MESSAGE BOARD <img
+            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> VIEWING POST <img
                 src="https://99gifshop.neocities.org/items/new/links1.gif">
             <a href="https://www.cameronsworld.net/">
                 <img id="pika" src="https://99gifshop.neocities.org/items/4/animep_1.gif">
@@ -35,20 +35,17 @@
             {% if session['user_email'] is defined %}
                 <a href="/">home</a>
                 <a href="/logout">logout</a>
+                <a href="/forum">forum</a>
                 <br>
                 <br>
-                <button id="create" class="open-button">create post</button>
-                <div class="form-popup" id="post-form">
-                    <form action="/create-post" method="POST" class="post-form-class">
-                        <h1 class="rainbowText" id="hidden-create">create a post!</h1>
-                        <label for="title"><b class="yellow">post title</b></label>
-                        <input type="text" name="title" id="post-title" required>
-
-                        <label for="post-content"><b class="blue">post content</b></label>
+                <div class="comment-popup" id="comment-form">
+                    <form action="/comment" method="POST" class="form-comment">
+                        <h1 class="rainbowText" id="hidden-create">leave a comment :)</h1>
+                        <label for="comment-content"><b class="blue">comment</b></label>
                         <textarea name="post-content" id="post-content"></textarea>
                         <div class="button-container">
-                            <button type="button" class="send-cancel" id="cancel"><span id="red">cancel</span></button>
-                            <button type="submit" class="send-cancel" id="send"><span class="rainbowText">send</span>
+                            <button type="button" class="send-cancel" id="comment-cancel"><span id="red">cancel</span></button>
+                            <button type="submit" class="send-cancel" id="comment-send"><span class="yellow">send</span>
                             </button>
                         </div>
                     </form>
@@ -58,25 +55,24 @@
         <div class="main-content-forum">
             <br>
         </div>
-        {% for post in posts %}
+        {% if post %}
+            <p>{{ x }}</p>
             <div class="main-content-forum">
                 <ol id="forum-posts">
                     <li class="post">
-                        <a href="/post/{{ post[0] }}" id="post-header-link"><h3 class="post-header">{{ post[2] }}</h3></a>
+                        <h3 class="post-header">{{ post[2] }}</h3>
                         <pre class="post-text">{{ post[3] }}</pre>
                     </li>
                 </ol>
                 <div class="username-delete-container">
                     <p class="username-post">{{ post[1] }}</p>
-                    {% if session['admin'] %}
-                        <form action="/delete-post" method="POST" class="delete-post">
+                    <form action="/add-comment" method="POST" class="add-comment">
                             <input type="hidden" name="post-id" value="{{ post[0] }}">
-                            <button type="submit" class="delete">remove</button>
-                        </form>
-                    {% endif %}
+                            <button type="submit" class="comment">comment</button>
+                    </form>
                 </div>
             </div>
-        {% endfor %}
+        {% endif %}
 
 
         <div class="main-content-forum" id="recent-posts-footer">

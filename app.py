@@ -1,6 +1,6 @@
 from modules.database import render_messages, chat_log, log_message, clear_chat, \
     user_signup, \
-    check_login, get_user, log_post, get_posts, delete_post
+    check_login, get_user, log_post, get_posts, delete_post, get_recent_posts, get_post
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 
 app = Flask(__name__)
@@ -78,7 +78,8 @@ def forum():
     if session['user_id']:
         username = get_user(session['user_id'])
         posts = get_posts()
-        return render_template("forum.html", username=username, posts=posts)
+        latest_posts = get_recent_posts()
+        return render_template("forum.html", username=username, posts=posts, latest_posts=latest_posts)
     else:
         return redirect(url_for("login"))
 
@@ -108,6 +109,13 @@ def delete_post_action():
         post_id = request.form.get("post-id")
         delete_post(post_id)
         return redirect(url_for("forum"))
+
+
+@app.route("/post/<post_id>")
+def view_post(post_id):
+    post = get_post(post_id)
+    latest_posts = get_recent_posts()
+    return render_template("post.html", post=post, latest_posts=latest_posts)
 
 
 if __name__ == '__main__':

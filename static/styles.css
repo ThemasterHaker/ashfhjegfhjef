@@ -182,7 +182,8 @@ h3 {
 #chatbox p {
     padding-left: 15px;
     color: cyan;
-    font-size: 14px;
+    font-size: 17px;
+    font-family: "pix", serif;
 }
 
 #chat-wrapper {
@@ -247,9 +248,13 @@ h3 {
     margin-right: 30px;
     background-color: black;
     border-radius: 4px;
+    color: #FFFB05;
+}
+#clear {
+    color: #FFFB05;
 }
 
-#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover, #create:hover, button.delete:hover {
+#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover, #create:hover, button.delete:hover, button.comment:hover, a h3:hover {
     background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -326,6 +331,8 @@ form.signup {
 
 #forum-posts {
     list-style-type: none;
+    padding-left: 25px;
+    padding-top: 15px;
 }
 
 .post {
@@ -402,15 +409,22 @@ form.signup {
     border-radius: 5px;
 
 }
+
 .post-form-class {
     font-family: "pix", serif;
     font-size: 24px;
     display: none;
     width: 400px;
+    padding-bottom: 30px;
     align-items: center;
     margin: 0 auto;
     gap: 7px;
+    border: 2px solid purple;
+    border-radius: 4px;
+    transition: 2000ms;
+    background-image: url("stars3.gif")
 }
+
 .post-form-class textarea {
     border: 2px solid purple;
     resize: vertical;
@@ -437,21 +451,25 @@ form.signup {
     margin-top: 5px;
     border-radius: 4px;
 }
+
 .form-popup {
     width: 100%;
     padding: 0 15px 15px 15px;
     margin: 0;
     border: none;
 }
+
 .button-container {
     display: flex;
     flex-direction: row;
     margin-top: 5px;
     column-gap: 10px;
 }
+
 #hidden-create {
     margin: 0 auto 5px auto;
 }
+
 button.send-cancel {
     width: 115px;
     background-color: #030303;
@@ -460,39 +478,48 @@ button.send-cancel {
     padding: 5px 0;
     border-radius: 4px;
 }
+
 button:hover {
     background-color: #2D2D2D;
 }
+
 #red {
     color: red;
 }
+
 #green {
     color: green;
 }
+
 #send {
     margin: 0 auto;
     display: block;
 }
+
 .post-text {
     color: #06D1FB;
 }
+
 .post-header {
     color: #FFFB05;
 }
+
 .username-post {
     display: flex;
     justify-content: center;
-    color: red;
+    color: #F6F6F6;
     margin-bottom: 0;
     padding-top: 25px;
     width: 100%;
+    text-decoration: underline;
 }
+
 #signup-footer {
     border-top: 4px double purple;
     padding-top: 10px;
 }
 
-button.delete {
+button.delete, button.comment {
     background-color: #030303;
     color: #FFFB05;
     border-radius: 5px;
@@ -501,13 +528,35 @@ button.delete {
     font-size: 20px;
     font-family: "pix", serif;
 }
+button.comment {
+    margin-bottom: 30px;
+}
+
 .username-delete-container {
     position: relative;
     width: 100%;
 }
-.delete-post {
+
+.delete-post, .add-comment {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.recent-links {
+    color: #06D1FB;
+    font-size: 16px;
+    font-family: "pix", serif;
+}
+
+.comment-popup {
+    display: none;
+}
+#post-header-link {
+    text-decoration: none;
+}
+.recent-footer {
+    padding-top: 15px;
+    padding-left: 15px;
 }

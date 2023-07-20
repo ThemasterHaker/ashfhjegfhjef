@@ -117,10 +117,27 @@ def log_post(data):
 
 
 def get_posts():
-    query = "SELECT * FROM posts;"
+    query = "SELECT * FROM posts ORDER BY post_id DESC;"
     params = ()
     result = sql_select(query, params)
     return result
+
+
+def get_post(post_id):
+    query = "SELECT * FROM posts WHERE post_id = %s"
+    params = (post_id,)
+    result = sql_select(query, params)
+    return result[0]
+
+
+def get_recent_posts():
+    query = "SELECT title, post_id FROM posts ORDER BY post_id DESC LIMIT 2"
+    params = ()
+    results = sql_select(query, params)
+    latest_posts = []
+    for result in results:
+        latest_posts.append(result)
+    return latest_posts
 
 
 def delete_post(post_id):
