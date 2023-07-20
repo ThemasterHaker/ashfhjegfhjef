@@ -1,6 +1,6 @@
 from modules.database import render_messages, chat_log, log_message, clear_chat, \
     user_signup, \
-    check_login, get_user, log_post, get_posts
+    check_login, get_user, log_post, get_posts, delete_post
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 
 app = Flask(__name__)
@@ -99,6 +99,14 @@ def create():
             'content': content
                 }
         log_post(data)
+        return redirect(url_for("forum"))
+
+
+@app.route("/delete-post", methods=["POST"])
+def delete_post_action():
+    if session['admin']:
+        post_id = request.form.get("post-id")
+        delete_post(post_id)
         return redirect(url_for("forum"))
 
 

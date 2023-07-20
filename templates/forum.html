@@ -48,7 +48,8 @@
                         <textarea name="post-content" id="post-content"></textarea>
                         <div class="button-container">
                             <button type="button" class="send-cancel" id="cancel"><span id="red">cancel</span></button>
-                            <button type="submit" class="send-cancel" id="send"><span class="yellow">send</span></button>
+                            <button type="submit" class="send-cancel" id="send"><span class="yellow">send</span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -58,16 +59,25 @@
             <br>
         </div>
         {% for post in posts %}
-        <div class="main-content-forum">
-            <ol id="forum-posts">
-                <li class="post">
-                    <h3 class="post-header">{{ post[2] }}</h3>
-                    <p class="post-text">{{ post[3] }}</p>
-                </li>
-            </ol>
-        <p class="username-post">{{ post[1] }}</p>
-        </div>
+            <div class="main-content-forum">
+                <ol id="forum-posts">
+                    <li class="post">
+                        <h3 class="post-header">{{ post[2] }}</h3>
+                        <p class="post-text">{{ post[3] }}</p>
+                    </li>
+                </ol>
+                <div class="username-delete-container">
+                    <p class="username-post">{{ post[1] }}</p>
+                    {% if session['admin'] %}
+                        <form action="/delete-post" method="POST" class="delete-post">
+                            <input type="hidden" name="post-id" value="{{ post[0] }}">
+                            <button type="submit" class="delete">remove</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
+
 
         <div class="main-content-forum" id="recent-posts-footer">
             <ol id="forum-posts" class="recent-footer">

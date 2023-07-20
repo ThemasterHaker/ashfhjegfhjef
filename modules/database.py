@@ -2,9 +2,13 @@ import psycopg2
 from psycopg2 import pool
 import bcrypt
 
-db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
-# db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a.singapore-postgres' \
-#      '.render.com/cozydb'
+render = True
+db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a.singapore-postgres' \
+     '.render.com/cozydb'
+
+if render:
+    db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
+
 
 min_conn = 1
 max_conn = 10
@@ -93,7 +97,7 @@ def check_login(user_email, user_pw):
 
         return user_id, user_email, admin_status
     else:
-        return None
+        print("log-in error. try again.")
 
 
 def get_user(user_id):
@@ -109,7 +113,7 @@ def log_post(data):
     username, title, content = data['username'], data['title'], data['content']
     params = (username, title, content)
     sql_write(query, params)
-    return f"logged a new post from {username}!"
+    print(f"logged a new post from {username}!")
 
 
 def get_posts():
@@ -117,3 +121,10 @@ def get_posts():
     params = ()
     result = sql_select(query, params)
     return result
+
+
+def delete_post(post_id):
+    query = "DELETE FROM posts WHERE post_id = %s"
+    params = (post_id,)
+    sql_write(query, params)
+    print(f"deleted post_id: {post_id}")

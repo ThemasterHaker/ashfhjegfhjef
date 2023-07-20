@@ -67,9 +67,9 @@ input {
 }
 
 #signup-box {
-    border: 3px solid #F6F6F6;
-    border-left: 5px solid #F6F6F6;
-    border-top: 5px solid #F6F6F6;
+    border: 3px solid purple;
+    border-left: 5px solid purple;
+    border-top: 5px solid purple;
     border-radius: 10px;
     width: 300px;
     margin: 0 auto 50px auto;
@@ -249,7 +249,7 @@ h3 {
     border-radius: 4px;
 }
 
-#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover, #create:hover {
+#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover, #create:hover, button.delete:hover {
     background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -271,7 +271,9 @@ form.signup {
     align-items: center;
     text-align: left;
     gap: 3px;
-
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    background-image: url("stars3.gif");
 }
 
 #construction {
@@ -484,4 +486,28 @@ button:hover {
     margin-bottom: 0;
     padding-top: 25px;
     width: 100%;
+}
+#signup-footer {
+    border-top: 4px double purple;
+    padding-top: 10px;
+}
+
+button.delete {
+    background-color: #030303;
+    color: #FFFB05;
+    border-radius: 5px;
+    border: 2px solid purple;
+    padding: 4px;
+    font-size: 20px;
+    font-family: "pix", serif;
+}
+.username-delete-container {
+    position: relative;
+    width: 100%;
+}
+.delete-post {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }

@@ -17,14 +17,14 @@
 
     <header class="yellow">
         <h1 class="rainbowText">
-            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> WORK IN PROGRESS! <img
+            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> WELCOME! <img
                 src="https://99gifshop.neocities.org/items/new/links1.gif">
             <a href="https://www.cameronsworld.net/">
                 <img id="pika" src="https://99gifshop.neocities.org/items/4/animep_1.gif">
             </a>
             {% if session['user_email'] is defined %}
-            <p><em>logged in as {{ session['user_email'] }}</em></p>
-            {%  endif %}
+                <p><em>logged in as {{ session['user_email'] }}</em></p>
+            {% endif %}
         </h1>
     </header>
 
@@ -35,77 +35,77 @@
                     src="https://99gifshop.neocities.org/items/3/star.gif">
             </h2>
             {% if session['user_email'] is not defined %}
-            <a href="/signup">signup</a> <a href="/login">login</a>
-            {%  endif %}
-            {%  if session['user_email'] is defined %}
-            <a href="/logout">logout</a>
+                <a href="/signup">signup</a> <a href="/login">login</a>
+            {% endif %}
+            {% if session['user_email'] is defined %}
+                <a href="/logout">logout</a>
                 <a href="/forum">forum</a>
             {% endif %}
         </div>
         <div class="main-content">
-            <h3>The end of Geocities</h3>
-            <p>In 1999, then-internet giant Yahoo purchased GeoCities for $3.5 billion. The GeoCities service then began
-                to change its structure, although many of its legacy pages remained. GeoCities remained fairly popular
-                with people new to the web into the early ’00s.
-                However, its popularity began to decline as web hosting became cheaper and was more often included with
-                ISP plans or inexpensive Mac.com accounts. The rise of social media sites, like Myspace also contributed
-                to its demise.
-                In 2009, Yahoo announced it would be shutting down GeoCities, prompting an outcry among digital
-                preservationists about the massive loss of cultural history that would be. A volunteer Archive Team
-                started capturing as many GeoCities pages as possible before Yahoo pulled the plug.
-                They archived about 100,000 sites, and you can view most of them today on mirror sites, like
-                oocities.org.
+            <h3>The <em>new</em> old internet</h3>
+            <p>welcome to Cozy Corner, a digital haven crafted to capture the charm & creative spirit of 90's web
+                design. taking inspiration from platforms like geocities, and the vast collection of unique & expressive
+                user-created webpages that followed.<br><br>
+                todays social media lacks a lot of the fun & quirkiness that early digital social-networking platforms
+                had. they are also heavily driven by ad revenue and data harvesting.<br><br>
+                Cozy Corner is a place where internet users can connect. no friends list. no likes. no profile pictures. we won't ask u for ur social security number.
+                these things may seem like deeper ways to connect, but the internet is no popularity contest. we are all
+                just users, each, behind a screen, each with a name, and hopefully, each with something to say. <br><br>
+                come reminisce about the beauty of early web-design in the chatroom or engage in conversation about all
+                things life in the forum. we have even enhanced the user-experience so hopefully you can experience that
+                sweet, sweet nostalgia without anything breaking. :)
             </p>
         </div>
         <div class="main-content" id="chat-content">
             <div id="chat-wrapper">
                 <h3 id="terminal" class="rainbowText">leave a message!</h3>
 
-            <div id="chatbox">
-            </div>
-            {%  if session['admin'] == True %}
-                <div id="clear">
-                    <form name="clear" action="/clear-chat" method="POST">
-                        <input type="submit" value="clear" id="clear-btn">
-                    </form>
+                <div id="chatbox">
                 </div>
-            {% endif %}
+                {% if session['admin'] == True %}
+                    <div id="clear">
+                        <form name="clear" action="/clear-chat" method="POST">
+                            <input type="submit" value="clear" id="clear-btn">
+                        </form>
+                    </div>
+                {% endif %}
 
-            <form autocomplete="off" name="message" onsubmit="event.preventDefault(); submitMessage();">
-                <div class="form-wrapper">
-                    <div class="input-wrapper">
-                        <div class="form-field">
-                            {% if session['user_email'] is not defined %}
-                            <label for="chat-username">username </label>
-                            <input name="username" type="text" id="chat-username" required>
-                            {% endif %}
-                            <input name="username" type="hidden" id="chat-username" value="{{ username }}">
+                <form autocomplete="off" name="message" onsubmit="event.preventDefault(); submitMessage();">
+                    <div class="form-wrapper">
+                        <div class="input-wrapper">
+                            <div class="form-field">
+                                {% if session['user_email'] is not defined %}
+                                    <label for="chat-username">username </label>
+                                    <input name="username" type="text" id="chat-username" required>
+                                {% endif %}
+                                <input name="username" type="hidden" id="chat-username" value="{{ username }}">
+                            </div>
+                            <div class="form-field">
+                                <label for="usermsg" class="message">message </label>
+                                <input name="usermsg" type="text" id="usermsg" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <label for="usermsg" class="message">message </label>
-                            <input name="usermsg" type="text" id="usermsg" required>
+                        <div id="send">
+                            <input name="submitmsg" type="submit" id="submitmsg" value="send">
                         </div>
                     </div>
-                    <div id="send">
-                        <input name="submitmsg" type="submit" id="submitmsg" value="send">
-                    </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
         </div>
         <div class="main-content">
             <br>
             <br>
             <h3 class="red">updates:</h3>
             <div class="cyan">
-            <p>- added user sign-up, register now!</p>
-            <p>- head to the login page to gain access to the new section...</p>
+                <p>- added user sign-up, register now!</p>
+                <p>- head to the login page to gain access to the new section...</p>
             </div>
             <br>
             <h3 class="red">coming soon:</h3>
             <div class="cyan">
-            <p>- forum is currently in development for registered users</p>
-            <p>- i am working on something great! please stay patient :)</p>
+                <p>- forum is currently in development for registered users</p>
+                <p>- i am working on something great! please stay patient :)</p>
             </div>
         </div>
     </main>
@@ -113,9 +113,6 @@
     <footer>
         <p class="blue">The internet is a <span class="yellow">strange</span> place.</p>
         <p class="yellow">But I feel at <span class="blue">home</span> here.</p>
-        <div id="construct">
-            <img src="https://99gifshop.neocities.org/items/2/construction.gif">
-        </div>
 
         <audio class="audio" controls>
             <source src="/static/8bitaudio.mp3" type="audio/mpeg">
