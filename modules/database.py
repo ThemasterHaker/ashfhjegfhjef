@@ -1,15 +1,16 @@
 import psycopg2
 from psycopg2 import pool
 import bcrypt
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 render = True
-db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a.singapore-postgres' \
-     '.render.com/cozydb'
+db = os.environ.get('EXTERNAL_DB')
 
 if render:
-    db = 'postgres://snow:I7dBCaGnnvOlanqxcbzgk7tPtWvFcOwO@dpg-cip5t4unqql4qa1qcr20-a/cozydb'
-
-
+    db = os.environ.get('INTERNAL_DB')
 
 min_conn = 1
 max_conn = 10

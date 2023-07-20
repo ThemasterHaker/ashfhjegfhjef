@@ -250,6 +250,7 @@ h3 {
     border-radius: 4px;
     color: #FFFB05;
 }
+
 #clear {
     color: #FFFB05;
 }
@@ -528,6 +529,7 @@ button.delete, button.comment {
     font-size: 20px;
     font-family: "pix", serif;
 }
+
 button.comment {
     margin-bottom: 30px;
 }
@@ -553,9 +555,11 @@ button.comment {
 .comment-popup {
     display: none;
 }
+
 #post-header-link {
     text-decoration: none;
 }
+
 .recent-footer {
     padding-top: 15px;
     padding-left: 15px;

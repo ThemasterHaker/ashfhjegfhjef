@@ -51,7 +51,8 @@
                 had. they are mostly motivated by ad revenue, clicks, and milking $$$ from their users. social media no
                 longer feels 'fun'.<br><br>
                 Cozy Corner is a place where internet users can connect. no friends list. no likes. no profile pictures.
-                no ads. just sum internet friends havin' fun together, looking to connect & discuss the world wide web. <br><br>
+                no ads. just sum internet friends havin' fun together, looking to connect & discuss the world wide web.
+                <br><br>
                 come reminisce about the beauty of early web-design in the chatroom or engage in conversation about
                 anything u want in the forum. we have even enhanced the user-experience, so hopefully you can experience
                 that sweet, sweet nostalgia without anything breaking. :)
@@ -76,7 +77,7 @@
                         <div class="input-wrapper">
                             <div class="form-field">
                                 {% if session['user_email'] is not defined %}
-                                    <label for="chat-username">username </label>
+                                    <label for="chat-username"><span class="red">username </span></label>
                                     <input name="username" type="text" id="chat-username" required>
                                 {% endif %}
                                 <input name="username" type="hidden" id="chat-username" value="{{ username }}">

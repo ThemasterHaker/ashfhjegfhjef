@@ -29,24 +29,24 @@
             <a href="/">home</a>
         </div>
         <div id="signup-form">
-        <div id="signup-box">
-            <form class ="signup" action="/signup" method="POST" autocomplete="off">
-                email: <input type="text" name="email" required><br>
-                username: <input type="text" name="username" required><br>
-                password: <input type="password" name="password" required><br>
-                confirm pass: <input type="password" name="confirm" required><br>
-                <button id="signsubmit" type="submit">sign up</button>
-            </form>
-        </div>
+            <div id="signup-box">
+                <form class="signup" action="/signup" method="POST" autocomplete="off">
+                    email: <input type="text" name="email" required><br>
+                    username: <input type="text" name="username" required><br>
+                    password: <input type="password" name="password" required><br>
+                    confirm pass: <input type="password" name="confirm" required><br>
+                    <button id="signsubmit" type="submit">sign up</button>
+                </form>
+            </div>
             {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class="flashes">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
 
         </div>
     </main>

@@ -44,7 +44,8 @@
                         <label for="comment-content"><b class="blue">comment</b></label>
                         <textarea name="post-content" id="post-content"></textarea>
                         <div class="button-container">
-                            <button type="button" class="send-cancel" id="comment-cancel"><span id="red">cancel</span></button>
+                            <button type="button" class="send-cancel" id="comment-cancel"><span id="red">cancel</span>
+                            </button>
                             <button type="submit" class="send-cancel" id="comment-send"><span class="yellow">send</span>
                             </button>
                         </div>
@@ -67,8 +68,8 @@
                 <div class="username-delete-container">
                     <p class="username-post">{{ post[1] }}</p>
                     <form action="/add-comment" method="POST" class="add-comment">
-                            <input type="hidden" name="post-id" value="{{ post[0] }}">
-                            <button type="submit" class="comment">comment</button>
+                        <input type="hidden" name="post-id" value="{{ post[0] }}">
+                        <button type="submit" class="comment">comment</button>
                     </form>
                 </div>
             </div>
