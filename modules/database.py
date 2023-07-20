@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-render = False
+render = True
 db = os.environ.get('EXTERNAL_DB')
 
 if render:
