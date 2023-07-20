@@ -18,17 +18,18 @@ html, body {
 }
 
 @font-face {
-  font-family: "pixel font";
-  src: url("font22.TTF") format("truetype");
+    font-family: "pixel font";
+    src: url("font22.TTF") format("truetype");
 }
 
 @font-face {
-  font-family: "slim font";
-  src: url("ambitsek.ttf") format("truetype");
+    font-family: "slim font";
+    src: url("ambitsek.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "pix";
-  src: url("pix.ttf") format("truetype");
+    font-family: "pix";
+    src: url("pix.ttf") format("truetype");
 }
 
 header {
@@ -124,8 +125,8 @@ audio::-webkit-media-controls-panel {
 }
 
 audio::-webkit-media-controls-play-button, audio::-webkit-media-controls-mute-button {
-  background-color: #06D1FB;
-  border-radius: 50%;
+    background-color: #06D1FB;
+    border-radius: 50%;
 }
 
 footer {
@@ -152,20 +153,21 @@ footer {
 h3 {
     margin-top: 0;
 }
+
 .rainbowText {
-  font-family: "slim font", serif black;
-  background-image:
-    linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: move 200s linear infinite;
+    font-family: "slim font", serif black;
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: move 200s linear infinite;
 }
 
 @keyframes move {
-  to {
-    background-position: 4500vh;
-  }
+    to {
+        background-position: 4500vh;
+    }
 }
+
 #chatbox {
     margin: 25px auto;
     text-align: left;
@@ -176,11 +178,13 @@ h3 {
     overflow: hidden;
     border: 2px solid purple;
 }
+
 #chatbox p {
     padding-left: 15px;
     color: cyan;
     font-size: 14px;
 }
+
 #chat-wrapper {
     margin: 0 auto;
     background: black;
@@ -189,9 +193,11 @@ h3 {
     border: 2px solid purple;
     border-radius: 10px;
 }
+
 #chat-content {
     padding-top: 50px;
 }
+
 .form-field label {
     display: inline-block;
     width: 100px;
@@ -214,6 +220,7 @@ h3 {
     row-gap: 10px;
     margin-right: 10px;
 }
+
 #send {
     display: flex;
     align-items: stretch;
@@ -241,20 +248,23 @@ h3 {
     background-color: black;
     border-radius: 4px;
 }
-#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover {
-    background-image:
-    linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: move 400s linear infinite;
+
+#send input[type="submit"]:hover, a:hover, #clear input[type="submit"]:hover, #signsubmit:hover, #login-submit:hover, #create:hover {
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: move 400s linear infinite;
 }
+
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
+
 b {
     color: red;
     font-weight: bold;
 }
+
 form.signup {
     color: #F6F6F6;
     justify-content: center;
@@ -263,23 +273,29 @@ form.signup {
     gap: 3px;
 
 }
+
 #construction {
     margin-bottom: 25px;
 }
+
 .flashes {
     color: #F6F6F6;
     margin-bottom: 20px;
 }
+
 #login-header {
     margin-top: 30px;
     color: red;
 }
+
 #login-p {
     color: cyan;
 }
+
 .login {
     font-size: 18px;
 }
+
 #login-submit {
     border: 2px solid purple;
     color: #F6F6F6;
@@ -289,20 +305,21 @@ form.signup {
     margin-top: 15px;
     border-radius: 4px;
 }
+
 #terminal {
     text-align: left;
     padding-top: 20px;
     padding-left: 35px;
     margin-bottom: 10px;
 }
+
 .cyan {
     color: cyan;
 }
+
 .red {
     color: red;
 }
-
-
 
 
 #forum-posts {
@@ -341,6 +358,7 @@ form.signup {
     font-size: 24px;
     margin-bottom: 0;
 }
+
 .post-link {
     font-size: 18px;
     padding-left: 10px;
@@ -351,6 +369,8 @@ form.signup {
 }
 
 #thanku {
+    display: flex;
+    justify-content: center;
     text-align: center;
     margin: 10px 0 0 0;
     font-size: 16px;
@@ -359,11 +379,109 @@ form.signup {
 #recent-posts-footer {
 
 }
+
 .recent-footer {
     margin-top: 0;
     padding-top: 10px;
 }
+
 #clear-btn {
     border-radius: 4px;
     padding: 5px;
+}
+
+#create {
+    font-size: 20px;
+    color: #FFFB05;
+    background-color: #0A0A0A;
+    border: 2px solid purple;
+    padding: 4px;
+    font-family: "pix", serif;
+    border-radius: 5px;
+
+}
+.post-form-class {
+    font-family: "pix", serif;
+    font-size: 24px;
+    display: none;
+    width: 400px;
+    align-items: center;
+    margin: 0 auto;
+    gap: 7px;
+}
+.post-form-class textarea {
+    border: 2px solid purple;
+    resize: vertical;
+    background-color: #030303;
+    color: #F6F6F6;
+    font-family: "pix", serif;
+    font-size: 20px;
+}
+
+#post-title {
+    width: 75%;
+    padding: 4px;
+    font-family: "pix", serif;
+    font-size: 24px;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+#post-content {
+    padding: 4px 8px 250px;
+    white-space: initial;
+    overflow: scroll;
+    width: 75%;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+.form-popup {
+    width: 100%;
+    padding: 0 15px 15px 15px;
+    margin: 0;
+    border: none;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    column-gap: 10px;
+}
+#hidden-create {
+    margin: 0 auto 5px auto;
+}
+button.send-cancel {
+    width: 115px;
+    background-color: #030303;
+    color: #F6F6F6;
+    border: 2px solid purple;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #2D2D2D;
+}
+#red {
+    color: red;
+}
+#green {
+    color: green;
+}
+#send {
+    margin: 0 auto;
+    display: block;
+}
+.post-text {
+    color: #06D1FB;
+}
+.post-header {
+    color: #FFFB05;
+}
+.username-post {
+    display: flex;
+    justify-content: center;
+    color: red;
+    margin-bottom: 0;
+    padding-top: 25px;
+    width: 100%;
 }

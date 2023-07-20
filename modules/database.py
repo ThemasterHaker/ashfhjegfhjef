@@ -102,3 +102,18 @@ def get_user(user_id):
     result = sql_select(query, params)
     username = result[0][0]
     return username
+
+
+def log_post(data):
+    query = "INSERT INTO posts (username, title, content) VALUES (%s, %s, %s)"
+    username, title, content = data['username'], data['title'], data['content']
+    params = (username, title, content)
+    sql_write(query, params)
+    return f"logged a new post from {username}!"
+
+
+def get_posts():
+    query = "SELECT * FROM posts;"
+    params = ()
+    result = sql_select(query, params)
+    return result

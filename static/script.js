@@ -1,3 +1,7 @@
+const createPostBtn = document.getElementById("create")
+const closeFormBtn = document.getElementById("cancel")
+const sendPostBtn = document.getElementById("send")
+
 // REPLACED SOCKETIO LOGIC WITH AJAX REQUESTS, ALLOWS CHAT MSG TO SEND WITHOUT PAGE REFRESH
 
 // RENDERS CHAT MESSAGES
@@ -32,3 +36,26 @@ $(document).ready(function () {
         success: renderChatMessages
     });
 });
+
+
+function createPost(data) {
+
+}
+
+function openForm() {
+    console.log("opening...")
+    document.querySelector(".post-form-class").style.display = "flex";
+    document.getElementById("create").style.display = "none"
+}
+
+function closeForm() {
+    console.log("closing...")
+    document.querySelector(".post-form-class").style.display = "none";
+    document.getElementById("create").style.display = "inline-block"
+
+}
+
+createPostBtn.addEventListener("click", openForm)
+closeFormBtn.addEventListener("click", closeForm)
+sendPostBtn.addEventListener("click", createPost)
+

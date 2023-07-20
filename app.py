@@ -1,6 +1,6 @@
 from modules.database import render_messages, chat_log, log_message, clear_chat, \
     user_signup, \
-    check_login, get_user
+    check_login, get_user, log_post, get_posts
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 
 app = Flask(__name__)
@@ -77,9 +77,29 @@ def logout():
 def forum():
     if session['user_id']:
         username = get_user(session['user_id'])
-        return render_template("forum.html", username=username)
+        posts = get_posts()
+        return render_template("forum.html", username=username, posts=posts)
     else:
         return redirect(url_for("login"))
+
+
+@app.route("/create-post", methods=["POST"])
+def create():
+    username, title, content = "", "", ""
+    valid_post = False
+    if 'user_id' in session:
+        username = get_user(session['user_id'])
+        title = request.form.get("title")
+        content = request.form.get("post-content")
+        valid_post = True
+    if valid_post:
+        data = {
+            'username': username,
+            'title': title,
+            'content': content
+                }
+        log_post(data)
+        return redirect(url_for("forum"))
 
 
 if __name__ == '__main__':

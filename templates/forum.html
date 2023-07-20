@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <link rel="stylesheet" href="/static/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -17,7 +15,7 @@
 
     <header class="yellow">
         <h1 class="rainbowText">
-            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> INTERNET CAFE <img
+            <img src="https://99gifshop.neocities.org/items/new/links1.gif"> MESSAGE BOARD <img
                 src="https://99gifshop.neocities.org/items/new/links1.gif">
             <a href="https://www.cameronsworld.net/">
                 <img id="pika" src="https://99gifshop.neocities.org/items/4/animep_1.gif">
@@ -37,38 +35,39 @@
             {% if session['user_email'] is defined %}
                 <a href="/">home</a>
                 <a href="/logout">logout</a>
+                <br>
+                <br>
+                <button id="create" class="open-button">create post</button>
+                <div class="form-popup" id="post-form">
+                    <form action="/create-post" method="POST" class="post-form-class">
+                        <h1 class="rainbowText" id="hidden-create">create a post!</h1>
+                        <label for="title"><b class="yellow">post title</b></label>
+                        <input type="text" name="title" id="post-title" required>
+
+                        <label for="post-content"><b class="blue">post content</b></label>
+                        <textarea name="post-content" id="post-content"></textarea>
+                        <div class="button-container">
+                            <button type="button" class="send-cancel" id="cancel"><span id="red">cancel</span></button>
+                            <button type="submit" class="send-cancel" id="send"><span class="yellow">send</span></button>
+                        </div>
+                    </form>
+                </div>
             {% endif %}
         </div>
         <div class="main-content-forum">
             <br>
         </div>
+        {% for post in posts %}
         <div class="main-content-forum">
             <ol id="forum-posts">
                 <li class="post">
-                    <h3 class="post-header">how do I get a job as a software dev?</h3>
-                    <p class="post-text">I am currently learning javascript, python, and front-end web development. Any tips?</p>
+                    <h3 class="post-header">{{ post[2] }}</h3>
+                    <p class="post-text">{{ post[3] }}</p>
                 </li>
             </ol>
-
+        <p class="username-post">{{ post[1] }}</p>
         </div>
-        <div class="main-content-forum">
-                <ol id="forum-posts">
-                    <li class="post">
-                        <h3 class="post-header">just wanted to say hi!</h3>
-                        <p class="post-text">hi, i'm bob I hope I am welcome here :)</p>
-                    </li>
-                </ol>
-
-        </div>
-        <div class="main-content-forum">
-                <ol id="forum-posts">
-                    <li class="post">
-                        <h3 class="post-header">anyone have any mcdonalds coupons?</h3>
-                        <p class="post-text">srsly craving sum chicken mcnuggets right now fam... DM me</p>
-                    </li>
-                </ol>
-
-        </div>
+        {% endfor %}
 
         <div class="main-content-forum" id="recent-posts-footer">
             <ol id="forum-posts" class="recent-footer">
@@ -85,5 +84,8 @@
 
     </main>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
