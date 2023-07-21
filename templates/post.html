@@ -45,22 +45,29 @@
             <br>
         </div>
         {% if post %}
-            <p>{{ x }}</p>
             <div class="main-content-forum">
                 <ol id="forum-posts">
                     <li class="post">
                         <h3 class="post-header">{{ post[2] }}</h3>
                         <pre class="post-text">{{ post[3] }}</pre>
                     </li>
+                    {% if comments %}
+                        {% for comment in comments %}
+                            <li class="comments-li">{{ comment.user_id }}: {{ comment.comment }}</li>
+                        {% endfor %}
+                    {% endif %}
+
+
                 </ol>
                 <div class="username-delete-container">
-                    <p class="username-post">{{ post[1] }}</p>
                     <button id="comment" class="comment">comment</button>
+                    <p class="username-post">{{ post[1] }}</p>
                     {% if session['user_email'] %}
                         <div class="comment-popup" id="comment-form">
                             <form action="/comment" method="POST" class="form-comment">
                                 <h1 class="rainbowText" id="hidden-create">leave a comment :)</h1>
                                 <textarea name="post-content" id="post-content"></textarea>
+                                <input type="hidden" name="post_id_comments" value="{{ post[0] }}">
                                 <div class="button-container">
                                     <button type="button" class="send-cancel" id="comment-cancel"><span
                                             id="red">cancel</span>

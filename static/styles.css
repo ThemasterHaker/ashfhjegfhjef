@@ -534,6 +534,7 @@ button.delete, button.comment {
 }
 button.comment {
     margin-bottom: 30px;
+    margin-left: 25px;
 }
 
 .username-delete-container {
@@ -570,4 +571,13 @@ button.comment {
 }
 #post-content {
     width: 100%;
+    background-color: #2D2D2D;
+    border: 2px solid purple;
+    color: #f6f6f6;
+}
+.comments-li {
+    color: white;
+    padding-left: 40px;
+    padding-top: 10px;
+    font-size: 20px;
 }

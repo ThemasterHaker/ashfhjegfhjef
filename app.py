@@ -1,6 +1,7 @@
 from models import render_messages, chat_log, log_message, clear_chat, \
     user_signup, \
-    check_login, get_user, log_post, get_posts, delete_post, get_recent_posts, get_post
+    check_login, get_user, log_post, get_posts, delete_post, get_recent_posts, get_post, log_comment, \
+    get_comments
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 import os
 from dotenv import load_dotenv
@@ -118,14 +119,24 @@ def delete_post_action():
 @app.route("/post/<post_id>")
 def view_post(post_id):
     post = get_post(post_id)
+    comments = get_comments(post_id)
     latest_posts = get_recent_posts()
-    return render_template("post.html", post=post, latest_posts=latest_posts)
+    return render_template("post.html", post=post, latest_posts=latest_posts, comments=comments)
 
 
-@app.route("/add-comment", methods=["POST"])
+@app.route("/comment", methods=["GET", "POST"])
 def add_comment():
-    post_id = request.form.get("post-id")
-    user_id = get_user(session['user_id'])
+    if request.method == "POST":
+        post_id = request.form.get("post_id_comments")
+        user_id = get_user(session['user_id'])
+        comment = request.form.get("post-content")
+        data = {
+            'post_id': post_id,
+            'user_id': user_id,
+            'comment': comment,
+        }
+        log_comment(data)
+    return redirect(url_for('view_post', post_id=post_id))
 
 
 if __name__ == '__main__':

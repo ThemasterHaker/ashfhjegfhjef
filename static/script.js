@@ -8,7 +8,7 @@ const closeFormBtn = document.getElementById("cancel")
 function renderChatMessages(data) {
     $('#chatbox').empty();
     data.reverse().forEach(function (msg) {
-        $('#chatbox').append('<p><b>' + msg.username + ': </b>' + msg.msg + '</p>');
+        $('#chatbox').append('<p><b class="red">' + msg.username + ': </b>' + msg.msg + '</p>');
     });
 }
 

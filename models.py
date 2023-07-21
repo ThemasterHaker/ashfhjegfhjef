@@ -145,3 +145,30 @@ def delete_post(post_id):
     params = (post_id,)
     sql_write(query, params)
     print(f"deleted post_id: {post_id}")
+
+
+def log_comment(data):
+    print(data)
+    query = "INSERT INTO comments (post_id, user_id, comment) VALUES (%s, %s, %s)"
+    post_id, user_id, comment = int(data['post_id']), data['user_id'], data['comment']
+    params = (post_id, user_id, comment)
+    sql_write(query, params)
+    print(f"New comment from {user_id} on post {post_id}.")
+
+
+def get_comments(post_id):
+    query = "SELECT * FROM comments WHERE post_id = %s"
+    params = (post_id,)
+    result = sql_select(query, params)
+    comments = []
+    for comment in result:
+        data = {
+            'comment_id': comment[0],
+            'post_id': comment[1],
+            'user_id': comment[2],
+            'comment': comment[3]
+        }
+        comments.append(data)
+    return comments
+
+
