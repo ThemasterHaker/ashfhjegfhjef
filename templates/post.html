@@ -38,19 +38,7 @@
                 <a href="/forum">forum</a>
                 <br>
                 <br>
-                <div class="comment-popup" id="comment-form">
-                    <form action="/comment" method="POST" class="form-comment">
-                        <h1 class="rainbowText" id="hidden-create">leave a comment :)</h1>
-                        <label for="comment-content"><b class="blue">comment</b></label>
-                        <textarea name="post-content" id="post-content"></textarea>
-                        <div class="button-container">
-                            <button type="button" class="send-cancel" id="comment-cancel"><span id="red">cancel</span>
-                            </button>
-                            <button type="submit" class="send-cancel" id="comment-send"><span class="yellow">send</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+
             {% endif %}
         </div>
         <div class="main-content-forum">
@@ -67,10 +55,22 @@
                 </ol>
                 <div class="username-delete-container">
                     <p class="username-post">{{ post[1] }}</p>
-                    <form action="/add-comment" method="POST" class="add-comment">
-                        <input type="hidden" name="post-id" value="{{ post[0] }}">
-                        <button type="submit" class="comment">comment</button>
-                    </form>
+                    <button id="comment" class="comment">comment</button>
+                    {% if session['user_email'] %}
+                        <div class="comment-popup" id="comment-form">
+                            <form action="/comment" method="POST" class="form-comment">
+                                <h1 class="rainbowText" id="hidden-create">leave a comment :)</h1>
+                                <textarea name="post-content" id="post-content"></textarea>
+                                <div class="button-container">
+                                    <button type="button" class="send-cancel" id="comment-cancel"><span
+                                            id="red">cancel</span>
+                                    </button>
+                                    <button type="submit" class="send-cancel" id="comment-send"><span class="yellow">send</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endif %}
@@ -94,6 +94,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='comments.js') }}"></script>
 </body>
 </html>

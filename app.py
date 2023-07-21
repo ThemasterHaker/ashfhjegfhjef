@@ -5,7 +5,6 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify, f
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 app = Flask(__name__)
@@ -121,6 +120,12 @@ def view_post(post_id):
     post = get_post(post_id)
     latest_posts = get_recent_posts()
     return render_template("post.html", post=post, latest_posts=latest_posts)
+
+
+@app.route("/add-comment", methods=["POST"])
+def add_comment():
+    post_id = request.form.get("post-id")
+    user_id = get_user(session['user_id'])
 
 
 if __name__ == '__main__':

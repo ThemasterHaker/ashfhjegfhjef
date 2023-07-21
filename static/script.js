@@ -1,6 +1,6 @@
 const createPostBtn = document.getElementById("create")
 const closeFormBtn = document.getElementById("cancel")
-const sendPostBtn = document.getElementById("send")
+
 
 // REPLACED SOCKETIO LOGIC WITH AJAX REQUESTS, ALLOWS CHAT MSG TO SEND WITHOUT PAGE REFRESH
 
@@ -38,11 +38,8 @@ $(document).ready(function () {
 });
 
 
-function createPost(data) {
 
-}
-
-function openForm() {
+function openForm(post_comment) {
     console.log("opening...")
     document.querySelector(".post-form-class").style.display = "flex";
     document.getElementById("create").style.display = "none"
@@ -57,5 +54,5 @@ function closeForm() {
 
 createPostBtn.addEventListener("click", openForm)
 closeFormBtn.addEventListener("click", closeForm)
-sendPostBtn.addEventListener("click", createPost)
+
 

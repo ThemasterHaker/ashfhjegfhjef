@@ -12,9 +12,7 @@ db = os.getenv('EXTERNAL_DB')
 if render:
     db = os.getenv('INTERNAL_DB')
 
-min_conn = 1
-max_conn = 10
-
+min_conn, max_conn = 1, 10
 conn_pool = psycopg2.pool.SimpleConnectionPool(min_conn, max_conn, db)
 
 
