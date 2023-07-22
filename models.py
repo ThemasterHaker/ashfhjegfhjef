@@ -148,7 +148,6 @@ def delete_post(post_id):
 
 
 def log_comment(data):
-    print(data)
     query = "INSERT INTO comments (post_id, user_id, comment) VALUES (%s, %s, %s)"
     post_id, user_id, comment = int(data['post_id']), data['user_id'], data['comment']
     params = (post_id, user_id, comment)
@@ -170,5 +169,3 @@ def get_comments(post_id):
         }
         comments.append(data)
     return comments
-
-

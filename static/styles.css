@@ -252,6 +252,7 @@ form #send {
     border-radius: 4px;
     color: #FFFB05;
 }
+
 #clear {
     color: #FFFB05;
 }
@@ -515,7 +516,7 @@ button:hover {
     justify-content: center;
     color: #F6F6F6;
     margin-bottom: 0;
-    padding-top: 25px;
+    margin-top: 0;
     width: 100%;
     text-decoration: underline;
 }
@@ -534,6 +535,7 @@ button.delete, button.comment {
     font-size: 20px;
     font-family: "pix", serif;
 }
+
 button.comment {
     margin-bottom: 30px;
     margin-left: 25px;
@@ -561,22 +563,27 @@ button.comment {
     display: none;
 
 }
+
 #hidden-create {
     font-size: 20px;
 }
+
 #post-header-link {
     text-decoration: none;
 }
+
 .recent-footer {
     padding-top: 15px;
     padding-left: 15px;
 }
+
 #post-content {
     width: 100%;
     background-color: #0A0A0A;
     border: 2px solid purple;
     color: #f6f6f6;
 }
+
 .comments-li {
     color: white;
     padding-left: 40px;
